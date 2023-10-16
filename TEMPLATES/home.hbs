@@ -2,10 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style.css">
+   {{!-- {{script src="<templates>2048.js"}} --}}
+    
+ 
+
+
+    
     <title>2048</title>
 </head>
 <body>
-    hi
+
+
+    <h1>2048</h1>
+    <hr>
+    <h2>Score - <span id="score">{{score}}</span></h2>
+    <h1>Welcome, {{user.name}}!</h1>
+    <div id="board">
+        <!-- Your game tiles will be generated here -->
+    </div> 
+    <img id="restartButton" src="3594008.png" alt="Restart" style="cursor: pointer;" width="30px">
+     <form action="/logout" method="POST">
+    <button type="submit">Logout</button>
+</form>
+
+     <script src="/2048.js"></script>
+
 </body>
 </html>
+
