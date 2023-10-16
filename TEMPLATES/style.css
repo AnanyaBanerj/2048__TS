@@ -1,0 +1,147 @@
+body {
+    font-family: 'Comic Sans MS', cursive;
+    background-color: #f5d287;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#board {
+    width: 400px;
+    height: 400px;
+    background-color: #cdc1b5;
+    border: 9px solid #bbada0;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.tile {
+    width: 90px;
+    height: 90px;
+    border: 5px solid #bbada0;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee4da;
+    color: #727371;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Colored tiles */
+.x2 {
+    background-color: #e6ceb6;
+    color: #727371;
+}
+
+.x4 {
+    background-color: #ece0ca;
+    color: #727371;
+}
+
+.x8 {
+    background-color: #f4b17a;
+    color: white;
+}
+
+.x16 {
+    background-color: #f59575;
+    color: white;
+}
+
+.x32 {
+    background-color: #f57c5f;
+    color: white;
+}
+
+.x64 {
+    background-color: #f65d3b;
+    color: white;
+}
+
+.x128 {
+    background-color: #edce71;
+    color: white;
+}
+
+.x256 {
+    background-color: #edcc63;
+    color: white;
+}
+
+.x512 {
+    background-color: #edc651;
+    color: white;
+}
+
+.x1024 {
+    background-color: #eec744;
+    color: white;
+}
+
+.x2048 {
+    background-color: #ecc230;
+    color: white;
+}
+
+.x4096 {
+    background-color: #fe3d3d;
+    color: white;
+}
+
+.x8192 {
+    background-color: #ff2020;
+    color: white;
+}
+
+#restartButton {
+    margin: 30px;
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 5px 15px rgba(255, 111, 97, 0.5);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#restartButton:hover {
+    background-color: #ff4935;
+}
+
+.tile:hover {
+    transform: scale(1.05);
+}
+
+.error {
+    color: #ff0000;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Add this to your style.css or in a style block within your HTML file */
+
+/* Style for the logout button */
+button[type="submit"] {
+    background-color: #f44336; /* Red background color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add some padding */
+    cursor: pointer; /* Add a pointer cursor on hover */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+  }
+  
