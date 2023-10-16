@@ -9,17 +9,21 @@ mongoose.connect("mongodb://localhost:27017/LoginSignup")
     console.log("failed");
 })
 
-const logInSchema=new mongoose.Schema({
-    name:{
-        type:String,
-        required:true
-    },
-    password:{
-        type:String,
-        required:true
-    }
-})
 
-const collections = new mongoose.model('Collections',logInSchema)
+
+
+const userSchema = new mongoose.Schema({
+    name: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+  });
+  
+
+const collections = new mongoose.model('Collections',userSchema)
 
 module.exports= collections
