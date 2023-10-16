@@ -5,13 +5,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-        
+       
+       
+<style>
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Comic Sans MS', cursive;
+  background-color: #f5d287;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column; /* Center elements vertically */
+  text-align: center; /* Center text within the body */
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #ff6f61; /* Fun text color */
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ff6f61; /* Fun border color */
+  border-radius: 10px; /* Rounder edges */
+  background-color: #fff; /* White background */
+  margin-bottom: 20px; /* Add space between input and button */
+}
+
+button {
+  background-color: #ff6f61; /* Fun button color */
+  color: #fff;
+  padding: 15px 30px; /* Bigger button */
+  border: none;
+  border-radius: 10px; /* Rounder edges */
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px; /* Larger text */
+  margin-top: 10px; /* Add space above button */
+}
+
+button:hover {
+  background-color: #ff4935; /* Darker color on hover */
+}
+
+/* Style the link */
+a {
+  text-decoration: none; /* Remove underline */
+  color: #ff6f61; /* Fun link color */
+  font-weight: bold;
+  padding: 10px 20px;
+  border: 2px solid #ff6f61; /* Fun border color */
+  border-radius: 10px; /* Rounder edges */
+  background-color: #fff; /* White background */
+  transition: background-color 0.3s, color 0.3s; /* Add a transition for hover effect */
+  display: inline-block;
+  margin-top: 19px;
+  margin-right: 10px; /* Add space between links */
+}
+
+/* Style the link on hover */
+a:hover {
+  background-color: #ff4935; /* Darker color on hover */
+  color: #fff; /* Change text color on hover */
+}
+
+.error {
+  color: #ff0000; /* Red color for error messages */
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+</style>
 </head>
 <body>
     
 <h1>Sign Up</h1>
 
-    <form action="/signup" method="post" >
+    <form action="/register" method="post" >
         <input placeholder="Name" name="name" type="text">
         <br>
         <input placeholder="Password" name="password" type="password">
@@ -21,5 +102,8 @@
 
        <a href="/">Go back to login page</a>
 
+     {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+    {{/if}}
 </body>
 </html>
