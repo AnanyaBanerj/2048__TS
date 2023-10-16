@@ -52,7 +52,6 @@ app.post("/register", (req, res) => {
 
         const db = client.db("LoginSignup");
 
-        // Check if a user with the same name already exists
         db.collection("collections").findOne({ name: data.name }, (err, existingUser) => {
             if (err) {
                 client.close();
@@ -61,7 +60,6 @@ app.post("/register", (req, res) => {
                 client.close();
                 res.render("signup", { errorMessage: "User with this name already exists" });
             } else {
-                // If the user does not exist, insert the new user
                 db.collection("collections").insertOne(data, (err, info) => {
                     client.close();
                     if (err) {
@@ -74,19 +72,24 @@ app.post("/register", (req, res) => {
             }
         });
     });
+
+    
 });
       
+app.get("/login", (req, res) => {
+    // Render the login page
+    res.render("login", { errorMessage: null }); // Initially, there is no error
+});
+
 app.post("/login", (req, res) => {
     const { name, password } = req.body;
-
-    // Check if 'name' and 'password' are provided
     if (!name || !password) {
-        return res.status(400).send("Name and password are required.");
+        return res.status(400).render("login", { errorMessage: "Name and password are required." });
     }
 
     mongoClient.connect(databaseUrl, { useUnifiedTopology: true }, (err, client) => {
         if (err) {
-            return res.status(500).send("Database connection error");
+            return res.status(500).render("login", { errorMessage: "Database connection error" });
         }
         
         const db = client.db("LoginSignup");
@@ -94,29 +97,23 @@ app.post("/login", (req, res) => {
         checkUser(name, password, db, (err, user) => {
             client.close();
             if (err) {
-                return res.status(500).send("An error occurred");
+                return res.status(500).render("login", { errorMessage: "An error occurred" });
             } else if (user) {
-                // Here, you should set a session or cookie to authenticate the user
-                // Example: req.session.user = user;
                 res.render("home");
             } else {
-                res.status(401).send("Incorrect credentials");
+                res.status(401).render("login", { errorMessage: "Incorrect credentials" });
             }
         });
     });
 });
+
 app.get("/login", (req, res) => {
-    // Render the login page here
-    res.render("login"); // Replace "login" with the actual template name or path
+    res.render("login");
 });
 
 
-app.listen(3000, () => {
-    console.log("Server is running on port 3000");
-});
 
 
-// Define the checkUser function to query the MongoDB collection for login checks
 function checkUser(name, password, db, callback) {
     db.collection("collections").findOne({ name: name, password: password }, (err, user) => {
         if (err) {
@@ -137,7 +134,11 @@ app.post("/logout", (req, res) => {
         if (err) {
             console.error("Error destroying session:", err);
         } else {
-            res.redirect("/login"); // Redirect to the login page or another page after logout
+            res.redirect("/login"); 
         }
     });
+});
+
+app.listen(3000, () => {
+    console.log("Server is running on port 3000");
 });
