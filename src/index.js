@@ -141,8 +141,3 @@ app.post("/logout", (req, res) => {
         }
     });
 });
-// // Implement the login route here
-
-// app.listen(3000, () => {
-//   console.log("Server is listening on port 3000");
-// });
